@@ -1,13 +1,19 @@
-<header>
-  <div class="logo">
-    <a href="/"><%= brand %></a>
+<header class="header">
+  <div class="header__left">
+    <div class="header__logo">
+      <a href="/">Medium</a>
+    </div>
+    <label class="search-input" for="search">
+      <form action="/articles/search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" name="q" id="search" />
+      </form>
+    </label>
   </div>
 
-  <input type="search" />
-
-  <div>
-    <ul>
-      <li><a href=""></a></li>
-    </ul>
-  </div>
+  <ul class="header__nav-items">
+    <li><a href="/articles">Home</a></li>
+    <li><a href="/articles/new">Write</a></li>
+    <li><a href="/articles/my-articles">My Articles</a></li>
+  </ul>
 </header>

@@ -1,6 +1,8 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
 import path from "path";
+import { router as articlesRouter } from "./routes/articles.router";
+import { router as indexRouter } from "./routes/index.router";
 
 export const app = express();
 
@@ -15,10 +17,5 @@ app.use(expressEjsLayouts);
 // setup to let express know where to find static files are
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req: Request, res: Response) => {
-  // server side
-  res.render("pages/index", { page: "home" }); // server side rendering
-});
-app.get("/articles", (req: Request, res: Response) => {
-  res.render("pages/articles");
-});
+app.use("/articles", articlesRouter);
+app.use("/", indexRouter);
