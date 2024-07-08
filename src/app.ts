@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req: Request, res: Response) => {
   // server side
-  res.render("pages/index"); // server side rendering
+  res.render("pages/index", { page: "home" }); // server side rendering
 });
 app.get("/articles", (req: Request, res: Response) => {
   res.render("pages/articles");
