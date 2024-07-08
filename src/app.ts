@@ -12,8 +12,12 @@ app.set("views", path.join(__dirname, "views"));
 app.set("layout", path.join(__dirname, "views/layouts/layout"));
 app.use(expressEjsLayouts);
 
+// setup to let express know where to find static files are
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req: Request, res: Response) => {
-  res.render("pages/index");
+  // server side
+  res.render("pages/index"); // server side rendering
 });
 app.get("/articles", (req: Request, res: Response) => {
   res.render("pages/articles");
