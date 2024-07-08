@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "tsnd --inspect -- src/index.ts",
-    "css": "",
-    "js": "",
+    "css": "sass -w src/public/sass:src/public/css",
     "hot-load": "",
     "dev": ""
   },
@@ -22,6 +21,7 @@
     "@types/express": "^4.17.21",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/node": "^20.14.10",
+    "sass": "^1.77.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.3"
   }
