@@ -17,5 +17,8 @@ app.use(expressEjsLayouts);
 // setup to let express know where to find static files are
 app.use(express.static(path.join(__dirname, "public")));
 
+// middleware
+app.use(express.urlencoded());
+
 app.use("/articles", articlesRouter);
 app.use("/", indexRouter);

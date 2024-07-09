@@ -35,5 +35,33 @@ main {
   align-items: center;
   gap: 1.5rem;
 }
+.header__logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.search-input {
+  background-color: #ededed;
+  padding: 1rem;
+  border-radius: 3rem;
+  min-width: 300px;
+}
+.search-input form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.search-input:focus-within {
+  outline: 0.5px solid rgb(94, 94, 94);
+}
+.search-input input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+}
+.search-input input:focus {
+  outline: none;
+}
 
 /*# sourceMappingURL=index.css.map */
