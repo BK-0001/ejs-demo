@@ -2,9 +2,15 @@
 
 <ul>
   <% articles.forEach(article => { %>
-  <li>
+  <li style="padding: 2rem; border: 1px solid rgb(230, 230, 230)">
     <h2><%= article.title %></h2>
     <p><%= article.description %></p>
+
+    <div class="actions">
+      <form method="post" action="/articles/<%= article.id %>/delete">
+        <button>delete</button>
+      </form>
+    </div>
   </li>
   <% }) %>
 </ul>

@@ -27,4 +27,31 @@ const getFilteredArticles = (req: Request, res: Response) => {
   });
 };
 
-export default { getAllArticles, getFilteredArticles, renderNew, create };
+const remove = (req: Request, res: Response) => {
+  // find id
+  const { id } = req.params;
+  // verify the id is valid in order to delete the resource
+
+  const existing = ArticleModel.findById(id);
+
+  // if does not exist
+  // hey we do not have that record
+  if (!existing) {
+    // do something
+  }
+
+  ArticleModel.removeById(id);
+
+  res.redirect("/articles");
+
+  // if does
+  // delete the resource and redirect
+};
+
+export default {
+  getAllArticles,
+  getFilteredArticles,
+  renderNew,
+  create,
+  remove
+};

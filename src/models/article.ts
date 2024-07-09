@@ -19,6 +19,10 @@ const findBySearch = (string: string): Article[] => {
   );
 };
 
+const findById = (id: string): Article | null => {
+  return articles.find((article) => article.id === id) || null;
+};
+
 const create = (data: Omit<Article, "id">): Article => {
   const newArticle: Article = {
     id: crypto.randomUUID(),
@@ -30,4 +34,18 @@ const create = (data: Omit<Article, "id">): Article => {
   return newArticle;
 };
 
-export const ArticleModel = { findBySearch, findMany, create };
+const removeById = (id: string) => {
+  const articleIndex = articles.findIndex((article) => article.id === id);
+
+  if (articleIndex !== -1) {
+    articles.splice(articleIndex, 1);
+  }
+};
+
+export const ArticleModel = {
+  findBySearch,
+  findMany,
+  create,
+  findById,
+  removeById
+};
