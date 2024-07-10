@@ -13,8 +13,17 @@ const findBy = (email: string): User | null => {
   return users.find((user) => user.email === email) || null;
 };
 
-const create = () => {
+const create = (email: string, password: string): User => {
   // create user
+  const newUser = {
+    email,
+    password,
+    id: crypto.randomUUID()
+  };
+
+  users.push(newUser);
+
+  return newUser;
 };
 
 export const UserModel = { findBy, create };
