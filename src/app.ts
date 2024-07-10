@@ -2,6 +2,7 @@ import express from "express";
 import expressEjsLayouts from "express-ejs-layouts";
 import path from "path";
 import { router as articlesRouter } from "./routes/articles.router";
+import { router as authRouter } from "./routes/auth.router";
 import { router as indexRouter } from "./routes/index.router";
 
 export const app = express();
@@ -22,3 +23,4 @@ app.use(express.urlencoded());
 
 app.use("/articles", articlesRouter);
 app.use("/", indexRouter);
+app.use("/auth", authRouter);
