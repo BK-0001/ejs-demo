@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ArticleModel } from "../models/article";
 
+// renderings
 const getAllArticles = (req: Request, res: Response) => {
   const articles = ArticleModel.findMany();
 
@@ -9,11 +10,6 @@ const getAllArticles = (req: Request, res: Response) => {
 
 const renderNew = (req: Request, res: Response) => {
   res.status(200).render("pages/articles-new");
-};
-
-const create = (req: Request, res: Response) => {
-  ArticleModel.create(req.body);
-  res.redirect("/articles");
 };
 
 const getFilteredArticles = (req: Request, res: Response) => {
@@ -25,6 +21,46 @@ const getFilteredArticles = (req: Request, res: Response) => {
     search: q,
     articles: filteredArticles
   });
+};
+
+// /articles/:id?title=
+const renderEdit = (req: Request, res: Response) => {
+  // get the id
+  const { id } = req.params;
+
+  // get the article with the id
+  const article = ArticleModel.findById(id);
+
+  // pass the data to be edited to the template
+
+  res.render("pages/articles-edit", { article });
+};
+
+// crud for articles
+
+const create = (req: Request, res: Response) => {
+  ArticleModel.create(req.body);
+  res.redirect("/articles");
+};
+
+// // /articles/:id?title="abc"
+const edit = (req: Request, res: Response) => {
+  // get the id from url
+  const { id } = req.params;
+
+  // need to get the data
+  const article = ArticleModel.findById(id);
+
+  if (!article) {
+    // throw the error
+    return;
+  }
+
+  // you are going to update the article
+  ArticleModel.update(id, req.body);
+
+  // redirect to the articles page
+  res.redirect("/articles");
 };
 
 const remove = (req: Request, res: Response) => {
@@ -52,6 +88,8 @@ export default {
   getAllArticles,
   getFilteredArticles,
   renderNew,
+  renderEdit,
   create,
+  edit,
   remove
 };

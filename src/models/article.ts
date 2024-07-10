@@ -34,6 +34,18 @@ const create = (data: Omit<Article, "id">): Article => {
   return newArticle;
 };
 
+const update = (id: string, article: Partial<Article>): Article => {
+  const articleIndex = articles.findIndex((article) => article.id === id);
+
+  const updatedArticle = {
+    ...articles[articleIndex],
+    ...article
+  };
+
+  articles[articleIndex] = updatedArticle;
+  return updatedArticle;
+};
+
 const removeById = (id: string) => {
   const articleIndex = articles.findIndex((article) => article.id === id);
 
@@ -46,6 +58,7 @@ export const ArticleModel = {
   findBySearch,
   findMany,
   create,
+  update,
   findById,
   removeById
 };
